@@ -1,0 +1,8 @@
+# max,min 的性质，如果只有一行则为null
+# Write your MySQL query statement below
+select max(salary) as SecondHighestSalary
+from (
+    select salary, dense_rank() over(order by salary desc) as rnk
+    from Employee
+)as t
+where rnk = 2 
